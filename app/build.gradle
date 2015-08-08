@@ -11,11 +11,13 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+
+        testApplicationId "jp.eure.easyrsser.test"
     }
 
     productFlavors {
-        stage {
-            applicationId "jp.eure.easyrsser"
+        develop {
+            applicationId "jp.eure.easyrsser.develop"
         }
         production {
             applicationId "jp.eure.easyrsser"
@@ -24,7 +26,9 @@ android {
 
     buildTypes {
         debug {
-            applicationIdSuffix ".debug"
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
+            debuggable true
         }
         release {
             minifyEnabled false
@@ -35,23 +39,28 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
+
     compile 'com.squareup.okhttp:okhttp:2.4.0'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+
+    compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.michaelpardo:ollie:0.3.1'
     provided 'com.michaelpardo:ollie-compiler:0.3.1'
 
-    // - Below - Unused but I want :)
-
+    compile 'com.google.dagger:dagger:2.0'
+    apt 'com.google.dagger:dagger-compiler:2.0'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.squareup.mortar:mortar:0.19'
+    compile 'com.github.pedrovgs:renderers:2.0.3'
     compile 'io.reactivex:rxandroid:1.0.0'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.jakewharton.timber:timber:3.1.0'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
     compile 'com.path:android-priority-jobqueue:1.1.2'
-    compile 'com.squareup.dagger:dagger:1.2.2'
-    provided 'com.squareup.dagger:dagger-compiler:1.2.2'
-    compile 'com.squareup.mortar:mortar:0.17'
-    compile 'com.squareup.mortar:dagger1support:0.17'
-    compile "com.android.support:support-v4:22.2.1"
+
+    debugCompile 'com.squareup.retrofit:retrofit-mock:1.9.0'
+    debugCompile 'com.jakewharton.scalpel:scalpel:1.1.2'
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.robolectric:robolectric:3.0'
