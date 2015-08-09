@@ -5,11 +5,11 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import jp.eure.easyrsser.model.entity.RSSItem;
+import jp.eure.easyrsser.model.entity.RssModel;
 
 public class RSSFeed {
 
-    private final List<RSSItem> items;
+    private final List<RssModel> items;
 
     private Date lastBuildDate;
 
@@ -17,14 +17,14 @@ public class RSSFeed {
 
     public RSSFeed() {
         super();
-        items = new LinkedList<RSSItem>();
+        items = new LinkedList<RssModel>();
     }
 
-    public List<RSSItem> getItems() {
+    public List<RssModel> getItems() {
         return Collections.unmodifiableList(items);
     }
 
-    void addItem(RSSItem item) {
+    void addItem(RssModel item) {
         items.add(item);
     }
 

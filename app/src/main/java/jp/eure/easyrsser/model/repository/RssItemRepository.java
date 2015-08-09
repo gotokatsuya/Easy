@@ -2,7 +2,7 @@ package jp.eure.easyrsser.model.repository;
 
 import java.util.List;
 
-import jp.eure.easyrsser.model.entity.RSSItem;
+import jp.eure.easyrsser.model.entity.RssModel;
 import ollie.query.Select;
 
 /**
@@ -10,18 +10,18 @@ import ollie.query.Select;
  */
 public class RssItemRepository {
 
-    public static final void save(RSSItem rssItem) {
+    public static final void save(RssModel rssModel) {
         // Should serialize `categories`(ArrayList<String>) before save.
-        rssItem.setSerializedCategories();
-        rssItem.save();
+        rssModel.setSerializedCategories();
+        rssModel.save();
     }
 
-    public static final RSSItem findByTitle(String title) {
-        return Select.from(RSSItem.class).where(RSSItem.TITLE + "=?", title).fetchSingle();
+    public static final RssModel findByTitle(String title) {
+        return Select.from(RssModel.class).where(RssModel.TITLE + "=?", title).fetchSingle();
     }
 
-    public static final List<RSSItem> findAll() {
-        return Select.from(RSSItem.class).fetch();
+    public static final List<RssModel> findAll() {
+        return Select.from(RssModel.class).fetch();
     }
 
 }

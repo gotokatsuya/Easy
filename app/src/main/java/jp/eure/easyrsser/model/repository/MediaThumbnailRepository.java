@@ -2,8 +2,8 @@ package jp.eure.easyrsser.model.repository;
 
 import java.util.List;
 
-import jp.eure.easyrsser.model.entity.MediaThumbnail;
-import jp.eure.easyrsser.model.entity.RSSItem;
+import jp.eure.easyrsser.model.entity.MediaThumbnailModel;
+import jp.eure.easyrsser.model.entity.RssModel;
 import ollie.query.Select;
 
 /**
@@ -11,17 +11,17 @@ import ollie.query.Select;
  */
 public class MediaThumbnailRepository {
 
-    public static final MediaThumbnail findByURL(String url) {
-        return Select.from(MediaThumbnail.class).where(MediaThumbnail.URL + "=?", url).fetchSingle();
+    public static final MediaThumbnailModel findByURL(String url) {
+        return Select.from(MediaThumbnailModel.class).where(MediaThumbnailModel.URL + "=?", url).fetchSingle();
     }
 
-    public static final List<MediaThumbnail> getThumbnails(RSSItem rssItem) {
-        return Select.from(MediaThumbnail.class).where(MediaThumbnail.RSS_ID + "=?", rssItem.id).fetch();
+    public static final List<MediaThumbnailModel> getThumbnails(RssModel rssModel) {
+        return Select.from(MediaThumbnailModel.class).where(MediaThumbnailModel.RSS_ID + "=?", rssModel.id).fetch();
     }
 
-    public static final void save(RSSItem rssItem, MediaThumbnail mediaThumbnail) {
-        mediaThumbnail.rssID = rssItem.id;
-        mediaThumbnail.save();
+    public static final void save(RssModel rssModel, MediaThumbnailModel mediaThumbnailModel) {
+        mediaThumbnailModel.rssID = rssModel.id;
+        mediaThumbnailModel.save();
     }
 
 }

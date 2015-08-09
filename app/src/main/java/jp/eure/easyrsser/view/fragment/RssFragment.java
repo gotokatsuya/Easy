@@ -1,4 +1,4 @@
-package jp.eure.easyrsser;
+package jp.eure.easyrsser.view.fragment;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,11 +14,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.eure.easyrsser.model.entity.RSSItem;
+import jp.eure.easyrsser.R;
+import jp.eure.easyrsser.model.entity.RssModel;
 import jp.eure.easyrsser.model.repository.RssItemRepository;
 import jp.eure.easyrsser.rss.RSSFeed;
 import jp.eure.easyrsser.rss.RSSReader;
 import jp.eure.easyrsser.rss.RSSReaderException;
+import jp.eure.easyrsser.view.adapter.RssAdapter;
 
 public class RssFragment extends Fragment implements AbsListView.OnItemClickListener {
 
@@ -71,9 +73,9 @@ public class RssFragment extends Fragment implements AbsListView.OnItemClickList
         }
 
         final String uri = "http://www.pairs.lv/feed";
-        new AsyncTask<Void, Void, List<RSSItem>>() {
+        new AsyncTask<Void, Void, List<RssModel>>() {
             @Override
-            protected List<RSSItem> doInBackground(Void... params) {
+            protected List<RssModel> doInBackground(Void... params) {
                 RSSReader reader = new RSSReader();
                 final RSSFeed feed;
                 try {
@@ -84,11 +86,11 @@ public class RssFragment extends Fragment implements AbsListView.OnItemClickList
                 } catch (RSSReaderException e) {
                     e.printStackTrace();
                 }
-                return new ArrayList<RSSItem>();
+                return new ArrayList<RssModel>();
             }
 
             @Override
-            protected void onPostExecute(List<RSSItem> result) {
+            protected void onPostExecute(List<RssModel> result) {
                 mAdapter.addAll(result);
             }
         }.execute();

@@ -16,8 +16,8 @@ import ollie.annotation.Unique;
 import static ollie.annotation.ConflictClause.REPLACE;
 import static ollie.annotation.ForeignKey.ReferentialAction.CASCADE;
 
-@Table("rss_items")
-public class RSSItem extends Model {
+@Table("rss_models")
+public class RssModel extends Model {
 
     public static final String TITLE = "name";
 
@@ -52,7 +52,7 @@ public class RSSItem extends Model {
 
     @Column(MEDIA_ENCLOSURE)
     @ForeignKey(onDelete = CASCADE)
-    public MediaEnclosure enclosure;
+    public MediaEnclosureModel enclosure;
 
     @Column(CATEGORIES)
     public String serializedCategories;

@@ -6,8 +6,8 @@ import ollie.Model;
 import ollie.annotation.Column;
 import ollie.annotation.Table;
 
-@Table("media_thumbnails")
-public class MediaThumbnail extends Model {
+@Table("media_thumbnail_models")
+public class MediaThumbnailModel extends Model {
 
     public static final String RSS_ID = "rss_id";
 

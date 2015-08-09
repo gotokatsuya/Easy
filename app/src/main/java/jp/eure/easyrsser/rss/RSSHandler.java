@@ -8,9 +8,9 @@ import android.net.Uri;
 import java.util.Date;
 import java.util.Map;
 
-import jp.eure.easyrsser.model.entity.MediaEnclosure;
-import jp.eure.easyrsser.model.entity.MediaThumbnail;
-import jp.eure.easyrsser.model.entity.RSSItem;
+import jp.eure.easyrsser.model.entity.MediaEnclosureModel;
+import jp.eure.easyrsser.model.entity.MediaThumbnailModel;
+import jp.eure.easyrsser.model.entity.RssModel;
 import jp.eure.easyrsser.model.repository.MediaThumbnailRepository;
 import jp.eure.easyrsser.model.repository.RssItemRepository;
 
@@ -22,7 +22,7 @@ public class RSSHandler extends DefaultHandler {
 
     private final RSSFeed feed = new RSSFeed();
 
-    private RSSItem item;
+    private RssModel item;
 
     private StringBuilder buffer;
 
@@ -143,11 +143,11 @@ public class RSSHandler extends DefaultHandler {
                 return;
             }
 
-            MediaThumbnail mediaThumbnail = new MediaThumbnail();
-            mediaThumbnail.url = Uri.parse(url);
-            mediaThumbnail.height = height;
-            mediaThumbnail.width = width;
-            MediaThumbnailRepository.save(item, mediaThumbnail);
+            MediaThumbnailModel mediaThumbnailModel = new MediaThumbnailModel();
+            mediaThumbnailModel.url = Uri.parse(url);
+            mediaThumbnailModel.height = height;
+            mediaThumbnailModel.width = width;
+            MediaThumbnailRepository.save(item, mediaThumbnailModel);
         }
 
     };
@@ -174,12 +174,12 @@ public class RSSHandler extends DefaultHandler {
                 return;
             }
 
-            MediaEnclosure mediaEnclosure = new MediaEnclosure();
-            mediaEnclosure.url = Uri.parse(url);
-            mediaEnclosure.length = length;
-            mediaEnclosure.mimeType = mimeType;
-            mediaEnclosure.save();
-            item.enclosure = mediaEnclosure;
+            MediaEnclosureModel mediaEnclosureModel = new MediaEnclosureModel();
+            mediaEnclosureModel.url = Uri.parse(url);
+            mediaEnclosureModel.length = length;
+            mediaEnclosureModel.mimeType = mimeType;
+            mediaEnclosureModel.save();
+            item.enclosure = mediaEnclosureModel;
         }
     };
 
@@ -207,7 +207,7 @@ public class RSSHandler extends DefaultHandler {
         setter = setters.get(qname);
         if (setter == null) {
             if (RSS_ITEM.equals(qname)) {
-                item = new RSSItem();
+                item = new RssModel();
             }
         } else if (setter instanceof AttributeSetter) {
             ((AttributeSetter) setter).set(attributes);

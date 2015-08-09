@@ -1,6 +1,6 @@
 package jp.eure.easyrsser.model.repository;
 
-import jp.eure.easyrsser.model.entity.MediaEnclosure;
+import jp.eure.easyrsser.model.entity.MediaEnclosureModel;
 import ollie.query.Select;
 
 /**
@@ -8,8 +8,8 @@ import ollie.query.Select;
  */
 public class MediaEnclosureRepository {
 
-    public static final MediaEnclosure findByURL(String url) {
-        return Select.from(MediaEnclosure.class).where(MediaEnclosure.URL + "=?", url).fetchSingle();
+    public static final MediaEnclosureModel findByURL(String url) {
+        return Select.from(MediaEnclosureModel.class).where(MediaEnclosureModel.URL + "=?", url).fetchSingle();
     }
 
 }

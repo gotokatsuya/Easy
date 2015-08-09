@@ -1,4 +1,4 @@
-package jp.eure.easyrsser;
+package jp.eure.easyrsser.view.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,12 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import jp.eure.easyrsser.model.entity.RSSItem;
+import jp.eure.easyrsser.R;
+import jp.eure.easyrsser.model.entity.RssModel;
 
 /**
  * Created by katsuyagoto on 15/07/31.
  */
-public class RssAdapter extends ArrayAdapter<RSSItem> {
+public class RssAdapter extends ArrayAdapter<RssModel> {
 
     public RssAdapter(Context context) {
         super(context, 0);
@@ -30,8 +31,8 @@ public class RssAdapter extends ArrayAdapter<RSSItem> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        RSSItem rssItem = getItem(position);
-        holder.title.setText(rssItem.title);
+        RssModel rssModel = getItem(position);
+        holder.title.setText(rssModel.title);
         return convertView;
     }
 

@@ -2,6 +2,7 @@ package jp.eure.easyrsser;
 
 import android.app.Application;
 
+import mortar.MortarScope;
 import ollie.Ollie;
 
 /**
@@ -10,6 +11,9 @@ import ollie.Ollie;
 public class EasyRsser extends Application {
 
     public static final int MAX_AVAILABLE_MEMORY = (int) (Runtime.getRuntime().maxMemory() / 1024);
+
+    private static final String ROOT_NAME = "Root";
+    private MortarScope mRootMortarScope;
 
     @Override
     public void onCreate() {
@@ -21,6 +25,14 @@ public class EasyRsser extends Application {
                 .setLogLevel(BuildConfig.DEBUG ? Ollie.LogLevel.FULL : Ollie.LogLevel.NONE)
                 .setCacheSize(MAX_AVAILABLE_MEMORY / 8)
                 .init();
+    }
+
+    @Override
+    public Object getSystemService(String name) {
+        if (mRootMortarScope == null) {
+            mRootMortarScope = MortarScope.buildRootScope().build(ROOT_NAME);
+        }
+        return mRootMortarScope.hasService(name) ? mRootMortarScope.getService(name) : super.getSystemService(name);
     }
 
 }
