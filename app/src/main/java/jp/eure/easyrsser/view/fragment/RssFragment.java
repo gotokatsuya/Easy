@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.eure.easyrsser.R;
-import jp.eure.easyrsser.model.entity.RssModel;
-import jp.eure.easyrsser.model.repository.RssItemRepository;
-import jp.eure.easyrsser.rss.RSSFeed;
-import jp.eure.easyrsser.rss.RSSReader;
-import jp.eure.easyrsser.rss.RSSReaderException;
+import jp.eure.easyrsser.model.entity.ArticleModel;
+import jp.eure.easyrsser.model.entity.xml.RSS;
+import jp.eure.easyrsser.model.net.RssClient;
+import jp.eure.easyrsser.model.repository.ArticleRepository;
+import jp.eure.easyrsser.model.repository.RSSRepository;
 import jp.eure.easyrsser.view.adapter.RssAdapter;
 
 public class RssFragment extends Fragment implements AbsListView.OnItemClickListener {
@@ -65,32 +65,24 @@ public class RssFragment extends Fragment implements AbsListView.OnItemClickList
     }
 
     private void fetchRss() {
-        mAdapter.addAll(RssItemRepository.findAll());
 
-        // Debugging. check if database is not empty;
-        if (!mAdapter.isEmpty()) {
-            return;
-        }
+        mAdapter.addAll(ArticleRepository.findAll());
 
-        final String uri = "http://www.pairs.lv/feed";
-        new AsyncTask<Void, Void, List<RssModel>>() {
+        final String endpoint = "http://www.pairs.lv";
+        new AsyncTask<Void, Void, List<ArticleModel>>() {
             @Override
-            protected List<RssModel> doInBackground(Void... params) {
-                RSSReader reader = new RSSReader();
-                final RSSFeed feed;
-                try {
-                    feed = reader.load(uri);
-                    if (feed != null) {
-                        return feed.getItems();
-                    }
-                } catch (RSSReaderException e) {
-                    e.printStackTrace();
-                }
-                return new ArrayList<RssModel>();
+            protected List<ArticleModel> doInBackground(Void... params) {
+                RSS rss = RssClient.get(endpoint);
+                boolean save = RSSRepository.save(rss);
+                return save ? ArticleRepository.findAll() : new ArrayList<ArticleModel>();
             }
 
             @Override
-            protected void onPostExecute(List<RssModel> result) {
+            protected void onPostExecute(List<ArticleModel> result) {
+                if (result.isEmpty()) {
+                    return;
+                }
+                mAdapter.clear();
                 mAdapter.addAll(result);
             }
         }.execute();

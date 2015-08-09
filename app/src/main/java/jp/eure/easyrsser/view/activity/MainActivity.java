@@ -5,14 +5,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import jp.eure.easyrsser.DaggerService;
-import jp.eure.easyrsser.presenter.MainPresenter;
 import jp.eure.easyrsser.R;
+import jp.eure.easyrsser.presenter.MainPresenter;
 import jp.eure.easyrsser.view.fragment.RssFragment;
 import mortar.MortarScope;
 import mortar.bundler.BundleServiceRunner;
+
+import static jp.eure.easyrsser.DaggerService.createComponent;
 import static mortar.MortarScope.buildChild;
 import static mortar.MortarScope.findChild;
-import static jp.eure.easyrsser.DaggerService.createComponent;
 
 public class MainActivity extends AppCompatActivity {
 

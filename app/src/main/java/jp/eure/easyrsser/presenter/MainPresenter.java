@@ -16,11 +16,13 @@ public class MainPresenter {
     @dagger.Component
     @Singleton
     public interface Component {
+
         void inject(MainView t);
     }
 
     @Singleton
     public static class Presenter extends ViewPresenter<MainView> {
+
         private int serial = -1;
 
         @Inject

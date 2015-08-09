@@ -8,12 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import jp.eure.easyrsser.R;
-import jp.eure.easyrsser.model.entity.RssModel;
+import jp.eure.easyrsser.model.entity.ArticleModel;
 
 /**
  * Created by katsuyagoto on 15/07/31.
  */
-public class RssAdapter extends ArrayAdapter<RssModel> {
+public class RssAdapter extends ArrayAdapter<ArticleModel> {
 
     public RssAdapter(Context context) {
         super(context, 0);
@@ -31,8 +31,8 @@ public class RssAdapter extends ArrayAdapter<RssModel> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        RssModel rssModel = getItem(position);
-        holder.title.setText(rssModel.title);
+        ArticleModel article = getItem(position);
+        holder.title.setText(article.title);
         return convertView;
     }
 

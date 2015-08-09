@@ -39,17 +39,19 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
-
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
-    compile 'com.squareup.retrofit:converter-simplexml:1.9.0'
+    compile('com.squareup.retrofit:converter-simplexml:1.9.0') {
+        exclude group: 'stax', module: 'stax-api'
+        exclude group: 'xpp3', module: 'xpp3'
+    }
     compile 'com.michaelpardo:ollie:0.3.1'
     provided 'com.michaelpardo:ollie-compiler:0.3.1'
-
     compile 'com.google.dagger:dagger:2.0'
     apt 'com.google.dagger:dagger-compiler:2.0'
     provided 'org.glassfish:javax.annotation:10.0-b28'
     compile 'com.squareup.mortar:mortar:0.19'
+
     compile 'com.github.pedrovgs:renderers:2.0.3'
     compile 'io.reactivex:rxandroid:1.0.0'
     compile 'de.greenrobot:eventbus:2.4.0'

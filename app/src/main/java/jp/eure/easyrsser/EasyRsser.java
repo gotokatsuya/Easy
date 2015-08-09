@@ -13,6 +13,7 @@ public class EasyRsser extends Application {
     public static final int MAX_AVAILABLE_MEMORY = (int) (Runtime.getRuntime().maxMemory() / 1024);
 
     private static final String ROOT_NAME = "Root";
+
     private MortarScope mRootMortarScope;
 
     @Override
