@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:easy="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.goka.easy.model.entity.Article"/>
+        <variable name="article"
+                  type="Article"/>
+    </data>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+
+        <com.goka.easy.view.component.GlideImageView
+                android:id="@+id/image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                easy:uri="@{article.enclosure.url}"
+                />
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@{article.title}"/>
+
+    </LinearLayout>
+
+</layout>
