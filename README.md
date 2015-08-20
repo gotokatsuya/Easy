@@ -21,7 +21,9 @@ Easy is RSSReader that made by Model-View-Presenter.
 ## Library
 
 - DataBinding
-- Ollie
+- Ollie  
+  - Migration  
+  - TypeAdapter
 - OkHttp
 - Retrofit
 - Dagger2
