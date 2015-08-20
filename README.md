@@ -2,7 +2,7 @@
 Easy is RSSReader that made by Model-View-Presenter.
 
 ## Architecture
-
+```
 |-- model
     |-- entity
         |-- xml
@@ -16,6 +16,7 @@ Easy is RSSReader that made by Model-View-Presenter.
     |-- adapter
     |-- component
     |-- popup
+```
 
 ## Library
 
