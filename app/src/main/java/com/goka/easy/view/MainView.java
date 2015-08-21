@@ -24,7 +24,7 @@ import javax.inject.Inject;
 public class MainView extends FrameLayout implements ViewImpl<MainActivity> {
 
     @Inject
-    public MainPresenter.Presenter mPresenter;
+    MainPresenter.Presenter mPresenter;
 
     private ListView mArticleListView;
 
