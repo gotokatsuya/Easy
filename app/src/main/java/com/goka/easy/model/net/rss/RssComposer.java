@@ -19,13 +19,7 @@ import timber.log.Timber;
  */
 public class RssComposer {
 
-    public static final RssComposer sInstance = new RssComposer();
-
-    public static RssComposer getInstance() {
-        return sInstance;
-    }
-
-    public void feed(Context context, String endpoint, final CallBack.List<Article> callBack) {
+    public static void feed(Context context, String endpoint, final CallBack.List<Article> callBack) {
         RssClient client = new RssClient(context, endpoint);
         client.feed()
                 .filter(new Func1<RssXML, Boolean>() {

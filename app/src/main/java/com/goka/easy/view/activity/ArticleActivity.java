@@ -20,7 +20,6 @@ public class ArticleActivity extends BaseActivity {
         return R.layout.activity_article;
     }
 
-
     public static void launch(Activity activity, Parcelable article) {
         Intent intent = new Intent(activity, ArticleActivity.class);
         intent.putExtra(Constant.Extra.ARTICLE, article);

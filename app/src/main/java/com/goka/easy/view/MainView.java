@@ -24,9 +24,9 @@ import javax.inject.Inject;
 public class MainView extends FrameLayout implements ViewImpl<MainActivity> {
 
     @Inject
-    MainPresenter.Presenter mPresenter;
+    public MainPresenter.Presenter mPresenter;
 
-    private ListView mRssListView;
+    private ListView mArticleListView;
 
     private ArticleAdapter mArticleAdapter;
 
@@ -55,10 +55,10 @@ public class MainView extends FrameLayout implements ViewImpl<MainActivity> {
     }
 
     public void setUpRssListView() {
-        mRssListView = (ListView) findViewById(R.id.rss_list_view);
+        mArticleListView = (ListView) findViewById(R.id.rss_list_view);
         mArticleAdapter = new ArticleAdapter(getContext());
-        mRssListView.setAdapter(mArticleAdapter);
-        mRssListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mArticleListView.setAdapter(mArticleAdapter);
+        mArticleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mPresenter.onClickArticle(mArticleAdapter.getItem(position));

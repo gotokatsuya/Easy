@@ -52,7 +52,7 @@ public class MainPresenter {
         }
 
         private void asyncUpdateArticles() {
-            RssComposer.getInstance().feed(getView().getContext(), Easy.END_POINT, new CallBack.List<Article>() {
+            RssComposer.feed(getView().getContext(), Easy.END_POINT, new CallBack.List<Article>() {
                 @Override
                 public void call(List<Article> list) {
                     if (!hasView() || list.isEmpty()) {
