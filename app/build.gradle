@@ -7,13 +7,13 @@ android {
     buildToolsVersion '23.0.0 rc3'
 
     defaultConfig {
-        applicationId "com.goka.easyrsser"
+        applicationId "com.goka.easy"
         minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
 
-        testApplicationId "com.goka.easyrsser.test"
+        testApplicationId "com.goka.easy.test"
     }
 
     buildTypes {

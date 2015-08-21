@@ -1,5 +1,5 @@
 # Easy
-Easy is RSSReader that made by Model-View-Presenter.
+Easy is RSSReader that is made by mvp.
 
 ## Architecture
 ```
