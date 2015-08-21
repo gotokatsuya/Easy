@@ -21,7 +21,9 @@ Easy is RSSReader that is made by mvp.
 ## Library
 
 - DataBinding
-- Ollie
+- Ollie  
+  - Migration  
+  - TypeAdapter
 - OkHttp
 - Retrofit
 - Dagger2
